@@ -15,28 +15,42 @@ export default{
 </script>
 
 <template>
-<div id="mainContainer">
-    <div class="mainDiv" style="margin-top: 10vh;">
-        <v-btn v-on:click="this.$router.push('/cole')">Cole's page</v-btn>
+<body>
+    <div class="center-container">
+        <div class="button-container">
+            <v-btn v-on:click="this.$router.push('/cole')">Cole's page</v-btn>
+        </div>
+        <div class="button-container">
+            <v-btn v-on:click="this.$router.push('/saml')">Sam Loecke's page</v-btn>
+        </div>
+        <div class="button-container">
+            <v-btn v-on:click="this.$router.push('/samn')">Sam Nicklaus's page</v-btn>
+        </div>
+        <div class="button-container">
+            <v-btn v-on:click="this.$router.push('/lukef')">Luke's page</v-btn>
+        </div>
     </div>
-    <div class="mainDiv">
-        <v-btn v-on:click="this.$router.push('/saml')">Sam Loecke's page</v-btn>
-    </div>
-    <div class="mainDiv">
-        <v-btn v-on:click="this.$router.push('/samn')">Sam Nicklaus's page</v-btn>
-    </div>
-    <div class="mainDiv">
-        <v-btn v-on:click="this.$router.push('/lukef')">Luke's page</v-btn>
-    </div>
-</div>
+</body>
 </template>
 
 <style>
-.mainDiv{
-    margin-bottom: 2.5vh;
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: Arial, sans-serif;
 }
-#mainContainer{
-    min-width: 100vw;
-    min-height: 100vh;
+
+.center-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.button-container {
+    margin: 5px 0; /* Adding some spacing between the buttons */
 }
 </style>
