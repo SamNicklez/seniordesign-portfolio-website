@@ -21,4 +21,8 @@ body, html, #app {
 .full-width {
   min-width: 100vw;
 }
+.v-main {
+  height: calc(100vh - 64px);
+  overflow-y: auto;
+}
 </style>

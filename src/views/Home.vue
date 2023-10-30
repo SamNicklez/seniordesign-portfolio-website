@@ -46,7 +46,7 @@ body, html {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* 100% of the viewport height */
+    height: 75vh; /* 100% of the viewport height */
     width: 100vw;  /* 100% of the viewport width */
 }
 
