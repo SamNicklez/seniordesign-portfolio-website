@@ -1,3 +1,7 @@
+<script>
+
+</script>
+
 <template>
   <v-app>
     <!-- Toolbar -->
@@ -8,10 +12,6 @@
     </v-main>
   </v-app>
 </template>
-
-<script>
-// ... Your script here
-</script>
 
 <style>
 body, html, #app {
