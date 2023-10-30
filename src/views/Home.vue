@@ -34,23 +34,5 @@ export default{
 </template>
 
 <style>
-body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    width: 100%;
-    font-family: Arial, sans-serif;
-}
 
-.center-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-}
-
-.button-container {
-    margin: 5px 0; /* Adding some spacing between the buttons */
-}
 </style>
