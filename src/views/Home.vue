@@ -7,16 +7,16 @@ export default{
     return { cookies };
   },
   mounted() {
-    let my_cookie_value = this.cookies.get("myCoookie")
-    console.log(my_cookie_value)
-    this.cookies.set("myCoookie", "abcdefg")
+    // let my_cookie_value = this.cookies.get("myCoookie")
+    // console.log(my_cookie_value)
+    // this.cookies.set("myCoookie", "abcdefg")
   },
 }
 </script>
 
 <template>
-<div>
-    <div class="mainDiv">
+<div id="mainContainer">
+    <div class="mainDiv" style="margin-top: 10vh;">
         <v-btn v-on:click="this.$router.push('/cole')">Cole's page</v-btn>
     </div>
     <div class="mainDiv">
@@ -29,11 +29,14 @@ export default{
         <v-btn v-on:click="this.$router.push('/lukef')">Luke's page</v-btn>
     </div>
 </div>
-
 </template>
 
 <style>
 .mainDiv{
     margin-bottom: 2.5vh;
+}
+#mainContainer{
+    min-width: 100vw;
+    min-height: 100vh;
 }
 </style>
