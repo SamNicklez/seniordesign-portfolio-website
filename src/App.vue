@@ -3,7 +3,9 @@
     <!-- Toolbar -->
     <v-toolbar title="Application" class="full-width"></v-toolbar>
     <!-- Main Content -->
+    <v-main>
       <router-view/>
+    </v-main>
   </v-app>
 </template>
 
