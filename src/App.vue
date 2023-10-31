@@ -63,16 +63,8 @@ export default {
     }
   },
   methods: {
-    /**
-     * Checks if the user has admin status and returns a boolean
-     */
-    checkAdmin() {
-      return this.cookies.get("isAdmin")
-    },
     handleItemClick(title) {
-
       console.log("Selected option:", title);
-
     },
   },
 }

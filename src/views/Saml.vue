@@ -1,5 +1,4 @@
 <script>
-import { useCookies } from "vue3-cookies";
 // JAVASCRIPT STUFF GOES HERE, examples below
 export default {
     data() {
