@@ -32,7 +32,7 @@ const router = createRouter({
       if (cookies.get('isAdmin') == 't') {
         next(); // Allow navigation
       } else {
-        this.cookies.set("fail", 't')
+        cookies.set("fail", 't')
         next('/'); // Prevent navigation
       }
     }
@@ -41,7 +41,7 @@ const router = createRouter({
       if (cookies.get('isAdmin') == 't') {
         next(); // Allow navigation
       } else {
-        this.cookies.set("fail", 't')
+        cookies.set("fail", 't')
         next('/'); // Prevent navigation
       }
     }
@@ -50,7 +50,7 @@ const router = createRouter({
       if (cookies.get('isAdmin') == 't') {
         next(); // Allow navigation
       } else {
-        this.cookies.set("fail", 't')
+        cookies.set("fail", 't')
         next('/'); // Prevent navigation
       }
     }
@@ -59,7 +59,7 @@ const router = createRouter({
       if (cookies.get('isAdmin') == 't') {
         next(); // Allow navigation
       } else {
-        this.cookies.set("fail", 't')
+        cookies.set("fail", 't')
         next('/'); // Prevent navigation
       }
     }

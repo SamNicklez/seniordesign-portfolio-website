@@ -46,11 +46,12 @@ export default {
             </v-form>
         </v-sheet>
     </div>
-    <div v-else style="max-width: 50vw;">
-        User is logged in, add log out functionality
+    <div v-else style="margin-top: 25vh;">
+        <v-sheet width="300" class="mx-auto">
         <v-btn color="success" class="mt-4" block @click="logOut" style="max-width: 10vw;">
                         Log Out
         </v-btn>
+        </v-sheet>
     </div>
 </template>
 

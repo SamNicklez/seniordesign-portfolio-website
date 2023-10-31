@@ -50,8 +50,8 @@ export default {
       names: new Map([
         ["Samuel Nicklaus", "/samn"],
         ["Sam Loecke", "/saml"],
-        ["Luke Farmer", "lukef"],
-        ["Cole Arduser", "colea"]
+        ["Luke Farmer", "/lukef"],
+        ["Cole Arduser", "/colea"]
       ]),
       color: "red",
     }
@@ -74,7 +74,12 @@ export default {
   },
   methods: {
     handleItemClick(title) {
-      console.log("Selected option:", title);
+      this.$router.push(this.names.get(title)).then(() => {
+        if(this.cookies.get("fail") == 't'){
+          alert("Please login before accessing personal pages")
+          this.cookies.set("fail","f")
+        }
+    })
     },
     loginHandle(){
       let login = this.cookies.get("isAdmin");
