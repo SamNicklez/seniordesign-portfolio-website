@@ -18,7 +18,7 @@ export default{
 <body>
     <div class="center-container">
         <div class="button-container">
-            <v-btn v-on:click="this.$router.push('/cole')">Cole's page</v-btn>
+            <v-btn v-on:click="this.$router.push('/colea')">Cole's page</v-btn>
         </div>
         <div class="button-container">
             <v-btn v-on:click="this.$router.push('/saml')">Sam Loecke's page</v-btn>

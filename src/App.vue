@@ -1,28 +1,80 @@
-<script>
-
-</script>
-
 <template>
   <v-app>
-    <!-- Toolbar -->
-    <v-toolbar title="Application" class="full-width"></v-toolbar>
-    <!-- Main Content -->
-    <v-main>
-      <router-view/>
-    </v-main>
+    <div style="min-width: 100vw;">
+      <!-- Toolbar -->
+      <v-app-bar app>
+        <v-toolbar-title>ECE:4880 Senior Design</v-toolbar-title>
+        <v-btn text to="/" style="margin-left: 1vw;">Home</v-btn>
+        <v-btn text to="/login" style="margin-left: 1vw;">Login</v-btn>
+        <v-menu offset-y>
+          <template #activator="{ props }">
+            <v-btn color="primary" dark v-bind="props.attrs" @click="props.onClick">
+              Student Pages
+            </v-btn>
+          </template>
+          <v-list>
+            <v-list-item v-for="(item, index) in this.items" :key="index" @click="handleItemClick(item.title)">
+              <v-list-item-title>{{ item.title }}</v-list-item-title>
+            </v-list-item>
+          </v-list>
+        </v-menu>
+      </v-app-bar>
+      <!-- Main Content -->
+      <v-main>
+        <router-view />
+      </v-main>
+    </div>
   </v-app>
 </template>
 
+<script>
+import { useCookies } from "vue3-cookies";
+export default {
+  data() {
+    return {
+      items: [
+        { title: 'Samuel Nicklaus' },
+        { title: 'Sam Loecke' },
+        { title: 'Luke Farmer' },
+        { title: 'Cole Arduser' },
+      ],
+      on: null,
+    }
+  },
+  setup() {
+    const { cookies } = useCookies();
+    return { cookies };
+  },
+  mounted() {
+    if (!this.cookies.isKey("isAdmin")) {
+      this.cookies.set("isAdmin", false)
+    }
+  },
+  methods: {
+    /**
+     * Checks if the user has admin status and returns a boolean
+     */
+    checkAdmin() {
+      return this.cookies.get("isAdmin")
+    },
+    handleItemClick(title) {
+      console.log("Selected option:", title);
+
+    },
+  },
+}
+</script>
+
 <style>
-body, html, #app {
+body,
+html,
+#app {
   margin: 0 !important;
-  padding:0;
+  padding: 0;
 }
-.full-width {
-  min-width: 100vw;
-}
+
 .v-main {
-  height: calc(100vh - 64px);
+  height: calc(100vh);
   overflow-y: auto;
 }
 </style>
