@@ -38,7 +38,12 @@ export default {
         { title: 'Luke Farmer' },
         { title: 'Cole Arduser' },
       ],
-      on: null,
+      names: new Map([
+        ["Samuel Nicklaus", "/samn"],
+        ["Sam Loecke", "/saml"],
+        ["Luke Farmer", "lukef"],
+        ["Cole Arduser", "colea"]
+      ]),
     }
   },
   setup() {
@@ -47,7 +52,14 @@ export default {
   },
   mounted() {
     if (!this.cookies.isKey("isAdmin")) {
-      this.cookies.set("isAdmin", false)
+      this.cookies.set("isAdmin", 'f')
+    }
+    if(!this.cookies.isKey("fail")){
+      this.cookies.set("fail", 'f')
+    }
+    if(this.cookies.get("fail") == 't'){
+      console.log("failure")
+      //notfiy user with alert
     }
   },
   methods: {
@@ -58,6 +70,7 @@ export default {
       return this.cookies.get("isAdmin")
     },
     handleItemClick(title) {
+
       console.log("Selected option:", title);
 
     },

@@ -15,7 +15,8 @@ import SamN from '/src/views/Samn.vue'
 import LukeF from '/src/views/Lukef.vue'
 import Login from '/src/views/Login.vue'
 import { globalCookiesConfig } from "vue3-cookies";
-
+import { useCookies } from "vue3-cookies";
+const { cookies } = useCookies();
 globalCookiesConfig({
   expireTimes: "30d",
   path: "/",
@@ -25,13 +26,49 @@ globalCookiesConfig({
 });
 
 const router = createRouter({
-    history: createWebHashHistory(),
-    routes: [{path:'/',component: Home},{path:'/colea',component: Cole},{path:'/saml',component: SamL},{path:'/samn',component: SamN},{path:'/lukef',component: LukeF},{path:'/login',component: Login}]
-  })
-  
+  history: createWebHashHistory(),
+  routes: [{ path: '/', component: Home }, {
+    path: '/colea', component: Cole, beforeEnter: (to, from, next) => {
+      if (cookies.get('isAdmin') == 't') {
+        next(); // Allow navigation
+      } else {
+        this.cookies.set("fail", 't')
+        next('/'); // Prevent navigation
+      }
+    }
+  }, {
+    path: '/saml', component: SamL, beforeEnter: (to, from, next) => {
+      if (cookies.get('isAdmin') == 't') {
+        next(); // Allow navigation
+      } else {
+        this.cookies.set("fail", 't')
+        next('/'); // Prevent navigation
+      }
+    }
+  }, {
+    path: '/samn', component: SamN, beforeEnter: (to, from, next) => {
+      if (cookies.get('isAdmin') == 't') {
+        next(); // Allow navigation
+      } else {
+        this.cookies.set("fail", 't')
+        next('/'); // Prevent navigation
+      }
+    }
+  }, {
+    path: '/lukef', component: LukeF, beforeEnter: (to, from, next) => {
+      if (cookies.get('isAdmin') == 't') {
+        next(); // Allow navigation
+      } else {
+        this.cookies.set("fail", 't')
+        next('/'); // Prevent navigation
+      }
+    }
+  }, { path: '/login', component: Login }]
+})
+
 const vuetify = createVuetify({
-    components,
-    directives,
+  components,
+  directives,
 })
 
 createApp(App).use(vuetify).use(router).mount('#app')

@@ -1,4 +1,5 @@
 <script>
+import { useCookies } from "vue3-cookies";
 // JAVASCRIPT STUFF GOES HERE, examples below
 export default {
     data() {
@@ -7,7 +8,7 @@ export default {
         }
     },
     methods: {
-        doStuff(){
+        doStuff() {
             console.log(this.globalVariable) //prints a global variable
         }
     },
