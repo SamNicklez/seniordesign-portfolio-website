@@ -3,7 +3,16 @@
     <div style="min-width: 100vw;">
       <!-- Toolbar -->
       <v-app-bar app>
-        <v-toolbar-title>ECE:4880 Senior Design</v-toolbar-title>
+        <v-toolbar-title>ECE:4880 Senior Design
+          <v-chip variant="elevated" :color="this.color" style="margin-left: 5vw;">
+            <div v-if="this.loginHandle()">
+              Status: Logged In
+            </div>
+            <div v-else>
+              Status: Not Logged In
+            </div>
+        </v-chip>
+        </v-toolbar-title>
         <v-btn text to="/" style="margin-left: 1vw;">Home</v-btn>
         <v-btn text to="/login" style="margin-left: 1vw;">Login</v-btn>
         <v-menu offset-y>
@@ -44,6 +53,7 @@ export default {
         ["Luke Farmer", "lukef"],
         ["Cole Arduser", "colea"]
       ]),
+      color: "red",
     }
   },
   setup() {
@@ -54,10 +64,10 @@ export default {
     if (!this.cookies.isKey("isAdmin")) {
       this.cookies.set("isAdmin", 'f')
     }
-    if(!this.cookies.isKey("fail")){
+    if (!this.cookies.isKey("fail")) {
       this.cookies.set("fail", 'f')
     }
-    if(this.cookies.get("fail") == 't'){
+    if (this.cookies.get("fail") == 't') {
       console.log("failure")
       //notfiy user with alert
     }
@@ -66,6 +76,17 @@ export default {
     handleItemClick(title) {
       console.log("Selected option:", title);
     },
+    loginHandle(){
+      let login = this.cookies.get("isAdmin");
+      if(login == 't'){
+        this.color = 'green'
+        return true
+      }
+      else{
+        this.color = 'red'
+        return false
+      }
+    }
   },
 }
 </script>

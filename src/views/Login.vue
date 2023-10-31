@@ -6,33 +6,27 @@ export default {
         return { cookies };
     },
     data: () => ({
-        name: '',
+        user: '',
+        password: '',
         nameRules: [
             v => !!v || 'Name is required',
             v => (v && v.length <= 10) || 'Name must be less than 10 characters',
         ],
         select: null,
-        items: [
-            'Item 1',
-            'Item 2',
-            'Item 3',
-            'Item 4',
-        ],
-        checkbox: false,
     }),
 
     methods: {
         async validate() {
             const { valid } = await this.$refs.form.validate()
-
-            if (valid) alert('Form is valid')
+            if (valid) {
+                this.cookies.set("isAdmin",'t')
+                this.$router.go('/login')
+            }
         },
-        reset() {
-            this.$refs.form.reset()
-        },
-        resetValidation() {
-            this.$refs.form.resetValidation()
-        },
+        logOut(){
+            this.cookies.set("isAdmin",'f')
+            this.$router.go('/login')
+        }
     },
 }
 </script>
@@ -41,8 +35,8 @@ export default {
     <div style="margin-top: 10vh;" v-if="(this.cookies.get('isAdmin') == 'f')">
         <v-sheet width="300" class="mx-auto">
             <v-form ref="form">
-                <v-text-field v-model="email" :counter="10" :rules="nameRules" label="Email" required></v-text-field>
-                <v-text-field type="password" v-model="password" :counter="10" :rules="nameRules" label="Namwe"
+                <v-text-field v-model="user" :rules="nameRules" label="Username" required></v-text-field>
+                <v-text-field type="password" v-model="password" :rules="nameRules" label="Password"
                     required></v-text-field>
                 <div class="d-flex flex-column">
                     <v-btn color="success" class="mt-4" block @click="validate">
@@ -52,8 +46,11 @@ export default {
             </v-form>
         </v-sheet>
     </div>
-    <div v-else>
+    <div v-else style="max-width: 50vw;">
         User is logged in, add log out functionality
+        <v-btn color="success" class="mt-4" block @click="logOut" style="max-width: 10vw;">
+                        Log Out
+        </v-btn>
     </div>
 </template>
 
