@@ -16,16 +16,34 @@ export default {
         ],
         select: null,
         data: [],
-        userExists: false,
+        errorEnable: false,
+        errorText: "",
+        errorType: "error"
     }),
-
+    mounted() {
+        this.errorEnable = false
+    },
     methods: {
         async validate() {
             const { valid } = await this.$refs.form.validate()
             if (valid) {
-                //Need to check later if user is actually valid
-                this.cookies.set("isAdmin", 't')
-                this.$router.go('/login')
+                const userCollection = collection(db, "User");
+                // Create a query against the collection
+                const q = query(userCollection, where("user", "==", this.user), where("pass", "==", this.password));
+
+                const querySnapshot = await getDocs(q);
+
+                if (!querySnapshot.empty) {
+                    // User with this username found
+                    const userData = querySnapshot.docs[0].data();
+                    this.cookies.set("isAdmin", 't')
+                    this.$router.go('/login')
+                } else {
+                    console.log('No user with this username found.');
+                    this.errorText = "Username or Password is incorrect!"
+                    this.errorType = "error"
+                    this.errorEnable = true
+                }
             }
         },
         logOut() {
@@ -41,7 +59,9 @@ export default {
                     const querySnapshot = await getDocs(q);
                     // Check if the user exists based on the query result
                     if (!querySnapshot.empty) {
-                        this.userExists = true
+                        this.errorText = "User already exists!"
+                        this.errorType = "error"
+                        this.errorEnable = true
                         return;  // Stop the function if the user exists
                     }
 
@@ -50,22 +70,25 @@ export default {
                         user: this.user,
                         pass: this.password
                     });
-
-                    console.log("Document written with ID: ", docRef.id);
+                    this.cookies.set("isAdmin", 't')
+                    this.$router.go('/login')
+                    //console.log("Document written with ID: ", docRef.id);
                 } catch (error) {
+                    this.cookies.set("isAdmin", 'f')
                     console.error("Error processing user: ", error);
                 }
             }
         }
     }
 }
+
 </script>
 
 <template>
-    <v-alert v-if="userExists" type="error" class="mx-auto" dense>
-        User already exists!
+    <v-alert v-if="errorEnable" :type="this.errorType" class="mx-auto" dense>
+        {{ this.errorText }}
     </v-alert>
-    <div style="margin-top: 10vh;" v-if="(this.cookies.get('isAdmin') == 'f')">
+    <div style="margin-top: 15vh;" v-if="(this.cookies.get('isAdmin') == 'f')">
         <v-sheet width="300" class="mx-auto">
             <v-form ref="form">
                 <v-text-field v-model="user" :rules="nameRules" label="Username" required></v-text-field>
@@ -73,7 +96,7 @@ export default {
                     required></v-text-field>
                 <div class="d-flex flex-column">
                     <v-btn color="success" class="mt-4" block @click="validate">
-                        Submit
+                        Log In
                     </v-btn>
                     <v-btn class="mt-4" block @click="createAccount()">
                         Create account
