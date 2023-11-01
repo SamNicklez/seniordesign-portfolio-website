@@ -1,9 +1,12 @@
 import './assets/main.css'
 import 'vuetify/styles'
 import { createVuetify } from 'vuetify'
+import "vuetify/dist/vuetify.min.css";
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 import { createApp } from 'vue'
+import "@mdi/font/css/materialdesignicons.css";
+import "@fortawesome/fontawesome-free/css/all.css";
 import App from './App.vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
 import { initializeApp } from 'firebase/app';

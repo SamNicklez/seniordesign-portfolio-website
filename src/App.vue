@@ -1,7 +1,6 @@
 <template>
   <v-app>
     <div style="min-width: 100vw;">
-      <!-- Toolbar -->
       <v-app-bar app>
         <v-toolbar-title>ECE:4880 Senior Design
           <v-chip variant="elevated" :color="this.color" style="margin-left: 5vw;">
@@ -28,7 +27,6 @@
           </v-list>
         </v-menu>
       </v-app-bar>
-      <!-- Main Content -->
       <v-main>
         <router-view />
       </v-main>
