@@ -29,6 +29,7 @@ globalCookiesConfig({
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
+
 const router = createRouter({
   history: createWebHashHistory(),
   routes: [{ path: '/', component: Home }, {

@@ -34,37 +34,34 @@ export default {
 </script>
 
 <template>
-  <v-container fluid class="portfolio-container">
-<v-row justify="center">
-  <v-col cols="12" class="text-center">
-    <h1 class="portfolio-title">Team 3 Portfolio</h1>
-  </v-col>
-</v-row>
-<v-row justify="center">
-  <v-col cols="12" class="text-center">
-    <img class="team-image" src="../assets/TeamPhoto.jpg" />
-  </v-col>
-</v-row>
-<v-row justify="center">
-  <v-col cols="12" class="text-center">
-    <h2 class="team-header">Meet the Team</h2>
-  </v-col>
-</v-row>
-<v-row justify="center">
-  <v-col cols="12" class="text-center">
-    <v-list class="team-list">
-      <v-list-item-group>
-        <v-list-item v-for="member in teamMembers" :key="member.name">
-          <v-list-item-content>
-            <v-list-item-title v-text="member.info"></v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-      </v-list-item-group>
-    </v-list>
-  </v-col>
-</v-row>
-</v-container>
-</template>
+    <div class="portfolio-container">
+      <div class="row justify-center">
+        <div class="col-12 text-center">
+          <h1 class="portfolio-title">Team 3 Portfolio</h1>
+        </div>
+      </div>
+      <div class="row justify-center">
+        <div class="col-12 text-center">
+          <img class="team-image" src="../assets/TeamPhoto.jpg" />
+        </div>
+      </div>
+      <div class="row justify-center">
+        <div class="col-12 text-center">
+          <h2 class="team-header">Meet the Team</h2>
+        </div>
+      </div>
+      <div class="row justify-center">
+        <div class="col-12 text-center">
+          <ul class="team-list">
+            <li v-for="member in teamMembers" :key="member.name">
+              {{ member.info }}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </template>
+  
 
 <style>
 body,
@@ -75,13 +72,15 @@ html {
     overflow: hidden;
     /* To ensure no scrollbars appear */
 }
+
 .team-image {
-  max-width: 600px;
-  margin: 20px 0;
+    max-width: 600px;
+    margin: 20px 0;
 }
+
 .portfolio-container {
     background-color: #212121;
-    min-height: 100vh;
+    min-height: 150vh;
 }
 
 .portfolio-title {
@@ -96,13 +95,16 @@ html {
 }
 
 .team-header {
-    font-size: 32px;
+    font-size: 42px;
     margin-top: 10px;
     color: white;
 }
 
 .team-list {
     max-width: 600px;
+    font-size: 20px;
     margin: 0 auto;
+    color:white;
+    list-style-type: none;
 }
 </style>
