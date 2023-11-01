@@ -1,5 +1,7 @@
 <script>
 import { useCookies } from "vue3-cookies";
+import { db } from '@/main.js';
+import { addDoc, collection, getDocs, query, where } from 'firebase/firestore';
 export default {
     setup() {
         const { cookies } = useCookies();
@@ -13,25 +15,56 @@ export default {
             v => (v && v.length <= 10) || 'Name must be less than 10 characters',
         ],
         select: null,
+        data: [],
+        userExists: false,
     }),
 
     methods: {
         async validate() {
             const { valid } = await this.$refs.form.validate()
             if (valid) {
-                this.cookies.set("isAdmin",'t')
+                //Need to check later if user is actually valid
+                this.cookies.set("isAdmin", 't')
                 this.$router.go('/login')
             }
         },
-        logOut(){
-            this.cookies.set("isAdmin",'f')
+        logOut() {
+            this.cookies.set("isAdmin", 'f')
             this.$router.go('/login')
+        },
+        async createAccount() {
+            const { valid } = await this.$refs.form.validate()
+            if (valid) {
+                try {
+                    // Query the "User" collection to check if the user already exists
+                    const q = query(collection(db, "User"), where("user", "==", this.user));
+                    const querySnapshot = await getDocs(q);
+                    // Check if the user exists based on the query result
+                    if (!querySnapshot.empty) {
+                        this.userExists = true
+                        return;  // Stop the function if the user exists
+                    }
+
+                    // Add a new document to the "User" collection
+                    const docRef = await addDoc(collection(db, "User"), {
+                        user: this.user,
+                        pass: this.password
+                    });
+
+                    console.log("Document written with ID: ", docRef.id);
+                } catch (error) {
+                    console.error("Error processing user: ", error);
+                }
+            }
         }
-    },
+    }
 }
 </script>
 
 <template>
+    <v-alert v-if="userExists" type="error" class="mx-auto" dense>
+        User already exists!
+    </v-alert>
     <div style="margin-top: 10vh;" v-if="(this.cookies.get('isAdmin') == 'f')">
         <v-sheet width="300" class="mx-auto">
             <v-form ref="form">
@@ -42,15 +75,18 @@ export default {
                     <v-btn color="success" class="mt-4" block @click="validate">
                         Submit
                     </v-btn>
+                    <v-btn class="mt-4" block @click="createAccount()">
+                        Create account
+                    </v-btn>
                 </div>
             </v-form>
         </v-sheet>
     </div>
     <div v-else style="margin-top: 25vh;">
         <v-sheet width="300" class="mx-auto">
-        <v-btn color="success" class="mt-4" block @click="logOut" style="max-width: 10vw;">
-                        Log Out
-        </v-btn>
+            <v-btn color="success" class="mt-4" block @click="logOut" style="max-width: 10vw;">
+                Log Out
+            </v-btn>
         </v-sheet>
     </div>
 </template>
