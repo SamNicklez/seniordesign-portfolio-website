@@ -4,10 +4,11 @@ import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 import { createApp } from 'vue'
-
 import App from './App.vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
-//import router from './router'
+import { initializeApp } from 'firebase/app';
+import { getFirestore } from 'firebase/firestore';
+import firebaseConfig from './firebaseConfig';
 import Home from '/src/views/Home.vue'
 import Cole from '/src/views/Colea.vue'
 import SamL from '/src/views/Saml.vue'
@@ -24,6 +25,9 @@ globalCookiesConfig({
   secure: true,
   sameSite: "None",
 });
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
 const router = createRouter({
   history: createWebHashHistory(),
@@ -71,4 +75,5 @@ const vuetify = createVuetify({
   directives,
 })
 
+export { db };
 createApp(App).use(vuetify).use(router).mount('#app')
