@@ -1,11 +1,15 @@
 <script>
 import { useCookies } from "vue3-cookies";
-import { db } from '@/main.js';
-import { collection, getDocs } from 'firebase/firestore';
 export default {
     data() {
         return {
             items: [],
+            teamMembers: [
+                { name: 'Samuel Nicklaus', info: 'Samuel Nicklaus - Computer Science and Engineering Major' },
+                { name: 'Cole Arduser', info: 'Cole Arduser - Computer Science and Engineering Major' },
+                { name: 'Luke Farmer', info: 'Luke Farmer - Electrical Engineering Major, Computer Track' },
+                { name: 'Sam Loecke', info: 'Sam Loecke - Electrical Engineering Major, Computer Track' }
+            ]
         }
     },
     setup() {
@@ -17,22 +21,49 @@ export default {
         // console.log(my_cookie_value)
         // this.cookies.set("myCoookie", "abcdefg")
     },
-    async created(){
-        const querySnapshot = await getDocs(collection(db, 'User'));
-        this.items = querySnapshot.docs.map(doc => doc.data());
+    async created() {
+        // const querySnapshot = await getDocs(collection(db, 'User'));
+        // this.items = querySnapshot.docs.map(doc => doc.data());
     },
     methods: {
         doStuff() {
-            console.log(this.items)
+            //console.log(this.items)
         }
     },
 }
 </script>
 
 <template>
-    <body>
-        <v-btn @click="doStuff()">click me</v-btn>
-    </body>
+  <v-container fluid class="portfolio-container">
+<v-row justify="center">
+  <v-col cols="12" class="text-center">
+    <h1 class="portfolio-title">Team 3 Portfolio</h1>
+  </v-col>
+</v-row>
+<v-row justify="center">
+  <v-col cols="12" class="text-center">
+    <img class="team-image" src="../assets/TeamPhoto.jpg" />
+  </v-col>
+</v-row>
+<v-row justify="center">
+  <v-col cols="12" class="text-center">
+    <h2 class="team-header">Meet the Team</h2>
+  </v-col>
+</v-row>
+<v-row justify="center">
+  <v-col cols="12" class="text-center">
+    <v-list class="team-list">
+      <v-list-item-group>
+        <v-list-item v-for="member in teamMembers" :key="member.name">
+          <v-list-item-content>
+            <v-list-item-title v-text="member.info"></v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list-item-group>
+    </v-list>
+  </v-col>
+</v-row>
+</v-container>
 </template>
 
 <style>
@@ -44,20 +75,34 @@ html {
     overflow: hidden;
     /* To ensure no scrollbars appear */
 }
-
-.center-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 75vh;
-    /* 100% of the viewport height */
-    width: 100vw;
-    /* 100% of the viewport width */
+.team-image {
+  max-width: 600px;
+  margin: 20px 0;
+}
+.portfolio-container {
+    background-color: #212121;
+    min-height: 100vh;
 }
 
-.button-container {
-    margin: 1vh 0;
-    /* Using viewport height units for spacing */
+.portfolio-title {
+    font-size: 42px;
+    font-weight: bold;
+    color: white;
+}
+
+.team-image {
+    max-width: 600px;
+    margin: 10px 0;
+}
+
+.team-header {
+    font-size: 32px;
+    margin-top: 10px;
+    color: white;
+}
+
+.team-list {
+    max-width: 600px;
+    margin: 0 auto;
 }
 </style>
