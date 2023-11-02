@@ -88,6 +88,6 @@ Before running the application, you need to set up Firebase configuration:
     npm run dev
 
 
-# Created with the assistance of GPT-4
+<small>Made with the assistance of GPT-4</small>
 
 
