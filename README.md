@@ -36,3 +36,55 @@ The `ece4880lab3` repository is dedicated to a portfolio website project for ECE
 - **src/assets/TeamPhoto.jpg**: An image file
 - **src/assets/base.css**
 - **src/assets/main.css**: CSS files containing the base and main styles for the website's appearance.
+
+## Running the Project Locally
+
+To run the ece4880lab3 portfolio website on your local machine, follow these steps:
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (which comes with [npm](http://npmjs.com/))
+
+### Installation
+
+1. Clone the repository and navigate to the directory:
+
+   ```bash
+   git clone https://github.com/SamNicklez/ece4880lab3.git
+   cd ece4880lab3
+
+
+2. To install the project dependencies, run the following command:
+    
+    ```bash
+    npm install
+
+### Firebase Configuration
+
+Before running the application, you need to set up Firebase configuration:
+
+1. Create a new file named `firebaseConfig.js` in the `src` directory.
+
+2. Add the following configuration to the file, replacing `<your-...>` with your actual Firebase project settings:
+
+    ```javascript
+    const firebaseConfig = {
+      apiKey: "<your-api-key>",
+      authDomain: "<your-auth-domain>",
+      projectId: "<your-project-id>",
+      storageBucket: "<your-storage-bucket>",
+      messagingSenderId: "<your-messaging-sender-id>",
+      appId: "<your-app-id>",
+      measurementId: "<your-measurement-id>"
+    };
+    
+    export default firebaseConfig;
+
+## Running the Application
+
+3. To start the development server, use the following command:
+
+    ```bash
+    npm run dev
+
+
