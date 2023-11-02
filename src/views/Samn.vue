@@ -112,10 +112,11 @@ html {
 
 /* Comments section styles */
 .comments-section {
-    min-height: 50vh;
+    min-height: 75vh;
     width: 80%;
     margin-left: auto;
     margin-right: auto;
+    padding-top: 10vh;
 }
 
 .comment {
