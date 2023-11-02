@@ -80,7 +80,7 @@ export default {
       this.$router.push(this.names.get(title)).then(() => {
         if (this.cookies.get("fail") == 't') {
           this.errorText = "Please login before accessing user pages!"
-          this.errorType = "error"
+          this.errorType = "info"
           this.errorEnable = true
           this.cookies.set("fail", "f")
         }
