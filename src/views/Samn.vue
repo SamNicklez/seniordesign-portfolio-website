@@ -11,9 +11,9 @@
         </div>
         <!-- Display Picture and Name -->
         <v-carousel style="max-width: 90vw;" cycle>
-            <v-carousel-item src="src\assets\SamNPhoto2.JPEG" cover></v-carousel-item>
-            <v-carousel-item src="src\assets\SamNPhoto1.jpg" cover></v-carousel-item>
-            <v-carousel-item src="src\assets\SamNPhoto3.jpg" cover></v-carousel-item>
+            <v-carousel-item src="/SamNPhoto1.jpg" cover></v-carousel-item>
+            <v-carousel-item src="/SamNPhoto2.JPEG" cover></v-carousel-item>
+            <v-carousel-item src="/SamNPhoto3.jpg" cover></v-carousel-item>
         </v-carousel>
         <!-- Comments Section -->
         </div>
