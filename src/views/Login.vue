@@ -38,6 +38,7 @@ export default {
                     const userData = querySnapshot.docs[0].data();
                     this.cookies.set("isAdmin", 't')
                     this.$router.go('/login')
+                    this.cookies.set("user",this.user)
                 } else {
                     console.log('No user with this username found.');
                     this.errorText = "Username or Password is incorrect!"
@@ -71,6 +72,7 @@ export default {
                         pass: this.password
                     });
                     this.cookies.set("isAdmin", 't')
+                    this.cookies.set("user",this.user)
                     this.$router.go('/login')
                     //console.log("Document written with ID: ", docRef.id);
                 } catch (error) {
