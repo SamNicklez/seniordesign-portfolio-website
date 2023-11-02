@@ -10,10 +10,10 @@
             <div v-else>
               Status: Not Logged In
             </div>
-        </v-chip>
+          </v-chip>
         </v-toolbar-title>
         <v-btn text to="/" style="margin-left: 1vw;">Home</v-btn>
-        <v-btn text to="/login" style="margin-left: 1vw;">Login</v-btn>
+        <v-btn style="margin-left: 1vw;" @click="goLogin()">Login</v-btn>
         <v-menu offset-y>
           <template #activator="{ props }">
             <v-btn color="primary" dark v-bind="props.attrs" @click="props.onClick">
@@ -28,6 +28,9 @@
         </v-menu>
       </v-app-bar>
       <v-main>
+        <v-alert v-if="errorEnable" :type="this.errorType" class="mx-auto" dense>
+        {{ this.errorText }}
+      </v-alert>
         <router-view />
       </v-main>
     </div>
@@ -52,6 +55,9 @@ export default {
         ["Cole Arduser", "/colea"]
       ]),
       color: "red",
+      errorEnable: false,
+      errorText: "",
+      errorType: "error"
     }
   },
   setup() {
@@ -67,28 +73,36 @@ export default {
     }
     if (this.cookies.get("fail") == 't') {
       console.log("failure")
-      //notfiy user with alert
     }
   },
   methods: {
     handleItemClick(title) {
       this.$router.push(this.names.get(title)).then(() => {
-        if(this.cookies.get("fail") == 't'){
-          alert("Please login before accessing personal pages")
-          this.cookies.set("fail","f")
+        if (this.cookies.get("fail") == 't') {
+          this.errorText = "Please login before accessing user pages!"
+          this.errorType = "error"
+          this.errorEnable = true
+          this.cookies.set("fail", "f")
         }
-    })
+        else{
+          this.errorEnable = false
+        }
+      })
     },
-    loginHandle(){
+    loginHandle() {
       let login = this.cookies.get("isAdmin");
-      if(login == 't'){
+      if (login == 't') {
         this.color = 'green'
         return true
       }
-      else{
+      else {
         this.color = 'red'
         return false
       }
+    },
+    goLogin(){
+      this.errorEnable = false
+      this.$router.push('/login')
     }
   },
 }
