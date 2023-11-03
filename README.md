@@ -53,7 +53,6 @@ To run the ece4880lab3 portfolio website on your local machine, follow these ste
    git clone https://github.com/SamNicklez/ece4880lab3.git
    cd ece4880lab3
 
-
 2. To install the project dependencies, run the following command:
     
     ```bash
