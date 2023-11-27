@@ -7,7 +7,7 @@ The `ece4880lab3` repository is dedicated to a portfolio website project for ECE
 - **.eslintrc.cjs**: Contains ESLint configuration for maintaining JavaScript coding standards.
 - **.prettierrc.json**: Prettier configuration file for ensuring consistent code formatting.
 - **.vscode/extensions.json**: Recommendations for extensions in Visual Studio Code to enhance the development environment.
-- **deploy.sh**: Shell script that is likely used to deploy the website to a server or hosting platform.
+- **deploy.sh**: Shell script that is used to deploy the website to a server or hosting platform.
 - **index.html**: The main HTML file that serves as the entry point for the website.
 - **package-lock.json**: Auto-generated file to track exact versions of installed npm packages.
 - **package.json**: Lists the dependencies and their specific versions that the project requires.
