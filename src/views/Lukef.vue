@@ -8,9 +8,14 @@
 
         <!-- First row with links and bio -->
         <div class="row links-and-bio">
-            <button class="link-button">GitHub Link</button>
+            <!-- GitHub Link -->
+            <a href="https://github.com/LukeFarmer20" target="_blank" class="link-button">GitHub Link</a>
+            
+            <!-- Bio -->
             <div class="bio">Bio</div>
-            <button class="link-button">Rick Roll Link</button>
+            
+            <!-- Rick Roll Link -->
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="link-button">Rick Roll Link</a>
         </div>
 
         <!-- Second row with images -->
@@ -34,6 +39,7 @@
         </div>
     </div>
 </template>
+
 
 <script>
 import { db } from '@/main.js';
@@ -86,61 +92,95 @@ export default {
 
 
 <style>
-/* Style the second row */
+/* Global Styles */
+body, html {
+  font-family: 'Arial', sans-serif; /* Use your preferred font */
+}
+
+#app {
+  max-width: 1200px; /* Set a max-width for your app and center it */
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Header Styles */
+.header {
+  text-align: center;
+  margin-bottom: 50px; /* Add more space below the header */
+}
+
+.header h1 {
+  font-size: 2.5em; /* Increase font size for the header */
+  margin-bottom: 0.5em; /* Adjust space between the name and title */
+}
+
+.header p {
+  font-size: 1.2em; /* Adjust font size for the title */
+  color: #555; /* A subtle color for the title */
+}
+
+/* First Row Styles */
+.links-and-bio {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Align items vertically */
+  margin-bottom: 30px; /* Add space below the row */
+}
+
+.link-button, .bio {
+  flex: 1; /* Allow buttons and bio to take equal space */
+  margin: 0 10px; /* Add space between elements */
+  padding: 15px 20px; /* Increase padding for better touch targets */
+  text-align: center; /* Center text for the bio */
+}
+
+/* Second Row Styles */
 .images {
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 20px; /* Adjust as needed */
+  display: flex;
+  justify-content: space-between; /* Space out images */
+  margin-bottom: 30px; /* Add space below the row */
 }
 
 .image {
-    width: 150px; /* Adjust as needed */
-    height: 150px; /* Adjust as needed */
-    background-color: #ccc; /* Placeholder color */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 10px; /* Adjust as needed */
-    /* Add additional styles for images */
+  flex: 1; /* Allow images to take equal space */
+  margin: 0 10px; /* Add space between images */
+  background-color: #eee; /* A placeholder color */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px; /* Adjust height as needed */
 }
 
-/* Complete the comment here if needed */
-/* ... */
-
-/* Existing comments section styles */
+/* Comments Section Styles */
 .comments-section {
-    margin-top: 20px;
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
+  margin-top: 30px;
+  width: 100%; /* Use full width for comments section */
+  background: #f9f9f9; /* A light background for the section */
+  padding: 20px; /* Add padding around the comments */
+  border-radius: 8px; /* Slight rounding of corners */
 }
 
 .comment {
-    background-color: #f5f5f5;
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 10px; /* Add space between comments */
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 4px;
+  margin-bottom: 15px; /* Add space between comments */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* A subtle shadow for depth */
+}
+
+.post-comment input, .post-comment button {
+  height: 40px; /* Ensure input and button are the same height */
 }
 
 .post-comment input {
-    margin-right: 5px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    width: calc(100% - 120px); /* Adjust the width to leave space for the button */
+  width: calc(100% - 130px); /* Adjust input width to account for button */
+  margin-right: 10px; /* Add space between input and button */
 }
 
 .post-comment button {
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    background-color: #2196F3;
-    color: white;
-    cursor: pointer;
+  width: 120px; /* Fix button width */
 }
 
-.post-comment button:hover {
-    background-color: #0b7dda;
-}
-</style>
 /* Add any additional styles you need here */
+
+</style>
