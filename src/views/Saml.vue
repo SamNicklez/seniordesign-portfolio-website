@@ -13,13 +13,13 @@
       <!-- Display Picture and Name -->
       <v-carousel style="max-width: 90vw; height: 500px;" cycle>
         <v-carousel-item>
-          <img src="/SamLPhoto2.JPG" class="carousel-image">
+          <img :src="SamLPhoto1URL" class="carousel-image">
         </v-carousel-item>
         <v-carousel-item>
-          <img src="/SamLPhoto1.JPG" class="carousel-image">
+          <img :src="SamLPhoto2URL" class="carousel-image">
         </v-carousel-item>
         <v-carousel-item>
-          <img src="/SamLPhoto3.jpg" class="carousel-image">
+          <img :src="SamLPhoto3URL" class="carousel-image">
         </v-carousel-item>
       </v-carousel>
 
@@ -53,6 +53,9 @@ export default {
           newComment: '', // Model for the new comment input
           comments: [], // Array to store comments from Firebase
           loadingComments: false, // Indicates if comments are being loaded
+          SamLPhoto1URL: new URL('../assets/SamLPhoto1.JPG', import.meta.url).href,
+          SamLPhoto2URL: new URL('../assets/SamLPhoto2.JPG', import.meta.url).href,
+          SamLPhoto3URL: new URL('../assets/SamLPhoto3.jpg', import.meta.url).href
       }
   },
   methods: {

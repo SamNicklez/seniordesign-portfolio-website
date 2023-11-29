@@ -16,9 +16,9 @@
         </div>
         <!-- Display Picture Carousel -->
         <div class="image-container">
-            <img src="/LukePhoto1.JPG" alt="Luke Image 1" class="profile-image">
-            <img src="/LukePhoto2.JPEG" alt="Luke Image 2" class="profile-image">
-            <img src= "/LukePhoto3.jpg" alt="Luke Image 3" class="profile-image">
+            <img :src="LukePhoto1URL" class="profile-image">
+            <img :src="LukePhoto2URL" class="profile-image">
+            <img :src="LukePhoto3URL" class="profile-image">
         </div>
         <!-- Comments Section -->
         <div class="comments-section">
@@ -54,6 +54,9 @@ export default {
             loadingComments: false, // Indicates if comments are being loaded
             flashMessage: false, // Whether the flash message is visible
             flashMessageContent: "I hope you're having a great day!", // The content of the flash message
+            LukePhoto1URL: new URL('../assets/LukePhoto1.JPG', import.meta.url).href,
+            LukePhoto2URL: new URL('../assets/LukePhoto2.JPEG', import.meta.url).href,
+            LukePhoto3URL: new URL('../assets/LukePhoto3.jpg', import.meta.url).href
         }
     },
     methods: {
