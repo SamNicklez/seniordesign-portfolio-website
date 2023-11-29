@@ -1,5 +1,6 @@
 <template>
   <div class="bio">
+    <button @click="launchConfetti" class="celebrate-button">Click Here!</button>
       <!-- Major and External Links -->
       <div class="info-and-links">
           <h1>Sam Loecke</h1>
@@ -41,6 +42,7 @@
 import { db } from '@/main.js';
 import { addDoc, collection, getDocs } from 'firebase/firestore';
 import { useCookies } from "vue3-cookies";
+
 export default {
   setup() {
       const { cookies } = useCookies();
@@ -78,7 +80,14 @@ export default {
           } finally {
               this.loadingComments = false;
           }
-      }
+      },
+      async launchConfetti() {
+      confetti({
+        particleCount: 600,
+        spread: 300,
+        origin: { y: 0.6 }
+      });
+    }
   },
   mounted() {
       this.fetchComments(); // Fetch comments when component is mounted
@@ -98,6 +107,25 @@ html {
   margin-bottom: 5vh;
   margin-top: 2.5vh;
 }
+.celebrate-button {
+    padding: 10px 20px; /* Adds padding around the text */
+    background-color: #4CAF50; /* Sets the background color */
+    color: white; /* Sets the text color */
+    border: none; /* Removes the border */
+    border-radius: 5px; /* Rounds the corners */
+    font-size: 8px; /* Sets the font size */
+    cursor: pointer; /* Changes cursor to pointer on hover */
+    transition: background-color 0.3s; /* Smooth transition for background color */
+    margin-top: 20px; /* Adds margin at the top */
+  }
+
+  .celebrate-button:hover {
+    background-color: #275529; /* Darker shade on hover */
+  }
+
+  .celebrate-button:focus {
+    outline: none; /* Removes the outline when focused (for click) */
+  }
 .carousel-image {
   position: absolute;
   top: 50%;
