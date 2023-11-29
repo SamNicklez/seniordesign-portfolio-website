@@ -243,7 +243,9 @@ h3{
     top: 50%; /* Center vertically */
     left: 50%; /* Center horizontally */
     transform: translate(-50%, -50%); /* Adjust for the element's size */
-    padding: 1rem 2rem;
+    padding: 4rem; /* Increase padding for a larger box */
+    font-size: 2em; /* Increase font size for a larger text */
+    font-size: 4vw;
     background-color: #4CAF50; /* A pleasant green background */
     color: white; /* Text color */
     border-radius: 4px; /* Rounded corners */
