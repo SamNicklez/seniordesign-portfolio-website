@@ -91,7 +91,7 @@ export default {
 </script>
 
 
-<style>
+<style scoped>
 /* Global Styles */
 body, html {
   font-family: 'Arial', sans-serif; /* Use your preferred font */
