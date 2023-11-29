@@ -1,3 +1,40 @@
+<template>
+    <div id="app">
+        <!-- Header with name and title -->
+        <div class="header">
+            <h1>Luke Farmer</h1>
+            <p>Senior Electrical Engineering</p>
+        </div>
+
+        <!-- First row with links and bio -->
+        <div class="row links-and-bio">
+            <button class="link-button">GitHub Link</button>
+            <div class="bio">Bio</div>
+            <button class="link-button">Rick Roll Link</button>
+        </div>
+
+        <!-- Second row with images -->
+        <div class="row images">
+            <div class="image">Image</div>
+            <div class="image">Image</div>
+            <div class="image">Image</div>
+        </div>
+
+        <!-- Comments Section -->
+        <div class="comments-section">
+            <h2>Comments</h2>
+            <div v-if="loadingComments">Loading comments...</div>
+            <div v-for="comment in comments" :key="comment.id" class="comment">
+                <strong>{{ comment.user }}</strong>: {{ comment.comment }}
+            </div>
+            <div class="post-comment">
+                <input type="text" v-model="newComment" placeholder="Write a comment..." />
+                <button @click="postComment">Post Comment</button>
+            </div>
+        </div>
+    </div>
+</template>
+
 <script>
 import { db } from '@/main.js';
 import { addDoc, collection, getDocs } from 'firebase/firestore';
@@ -47,43 +84,30 @@ export default {
 }
 </script>
 
-<template>
-    <!-- HTML STUFF GOES HERE -->
-    <div>
-        Hello World
-    </div>
-    <!-- Comments Section -->
-    <div class="comments-section">
-        <h2>Comments</h2>
-        <div v-if="loadingComments">Loading comments...</div>
-        <div v-for="comment in comments" :key="comment.id" class="comment">
-            <strong>{{ comment.user }}</strong>: {{ comment.comment }}
-        </div>
-        <div class="post-comment">
-            <input type="text" v-model="newComment" placeholder="Write a comment..." />
-            <button @click="postComment">Post Comment</button>
-        </div>
-    </div>
-    </template>
 
 <style>
-body,
-html {
-    height: 100%;
-    margin: 0;
+/* Style the second row */
+.images {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px; /* Adjust as needed */
 }
 
-.external-links a {
-    margin: 10px;
-    text-decoration: none;
-    color: #2196F3;
+.image {
+    width: 150px; /* Adjust as needed */
+    height: 150px; /* Adjust as needed */
+    background-color: #ccc; /* Placeholder color */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px; /* Adjust as needed */
+    /* Add additional styles for images */
 }
 
-.external-links a:hover {
-    text-decoration: underline;
-}
+/* Complete the comment here if needed */
+/* ... */
 
-/* Comments section styles */
+/* Existing comments section styles */
 .comments-section {
     margin-top: 20px;
     width: 80%;
@@ -95,11 +119,7 @@ html {
     background-color: #f5f5f5;
     padding: 10px;
     border-radius: 5px;
-    margin-bottom: 10px;
-}
-
-.post-comment {
-    margin-top: 20px;
+    margin-bottom: 10px; /* Add space between comments */
 }
 
 .post-comment input {
@@ -107,6 +127,7 @@ html {
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 4px;
+    width: calc(100% - 120px); /* Adjust the width to leave space for the button */
 }
 
 .post-comment button {
@@ -122,3 +143,4 @@ html {
     background-color: #0b7dda;
 }
 </style>
+/* Add any additional styles you need here */
