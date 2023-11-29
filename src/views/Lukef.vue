@@ -1,30 +1,18 @@
 <template>
-    <div id="app">
-        <!-- Header with name and title -->
-        <div class="header">
+    <div class="bio">
+        <!-- Major and External Links -->
+        <div class="info-and-links">
             <h1>Luke Farmer</h1>
-            <p>Senior Electrical Engineering</p>
+            <h2>Senior: Electrical Engineering</h2>
+            <v-btn color="primary" href="https://github.com/LukeFarmer20" target="_blank" rel="noopener" class="link-button">Github</v-btn>
+            <v-btn color="primary" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener" class="link-button">Rick Roll</v-btn>
         </div>
-
-        <!-- First row with links and bio -->
-        <div class="row links-and-bio">
-            <!-- GitHub Link -->
-            <a href="https://github.com/LukeFarmer20" target="_blank" class="link-button">GitHub Link</a>
-            
-            <!-- Bio -->
-            <div class="bio">Bio</div>
-            
-            <!-- Rick Roll Link -->
-            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="link-button">Rick Roll Link</a>
-        </div>
-
-        <!-- Second row with images -->
-        <div class="row images">
-            <div class="image">Image</div>
-            <div class="image">Image</div>
-            <div class="image">Image</div>
-        </div>
-
+        <!-- Display Picture Carousel -->
+        <v-carousel style="max-width: 90vw;" cycle>
+            <v-carousel-item src="./ColeAPhoto1.jpg" cover></v-carousel-item>
+            <v-carousel-item src="./ColeAPhoto2.jpg" cover></v-carousel-item>
+            <v-carousel-item src="./ColePhoto4.jpg" cover></v-carousel-item>
+        </v-carousel>
         <!-- Comments Section -->
         <div class="comments-section">
             <h2>Comments</h2>
@@ -39,6 +27,8 @@
         </div>
     </div>
 </template>
+
+
 
 
 <script>
@@ -92,95 +82,112 @@ export default {
 
 
 <style scoped>
-/* Global Styles */
+/* Reset margins and padding to handle inconsistencies across browsers */
 body, html {
-  font-family: 'Arial', sans-serif; /* Use your preferred font */
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Arial', sans-serif; /* Preferred font */
 }
 
-#app {
-  max-width: 1200px; /* Set a max-width for your app and center it */
-  margin: 0 auto;
-  padding: 20px;
+/* Center the bio section and give it a minimum height */
+.bio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Align to top if content is smaller than the viewport height */
+    min-height: 100vh;
+    text-align: center;
 }
 
-/* Header Styles */
-.header {
-  text-align: center;
-  margin-bottom: 50px; /* Add more space below the header */
+/* Style the information and links section */
+.info-and-links {
+    padding: 2rem 0; /* Add padding above and below the content */
 }
 
-.header h1 {
-  font-size: 2.5em; /* Increase font size for the header */
-  margin-bottom: 0.5em; /* Adjust space between the name and title */
+/* Header styles */
+h1 {
+    font-size: 3rem; /* Large font size for the name */
+    margin-bottom: 0.5rem; /* Spacing between the name and the major */
+    color: #333; /* Darker text for better readability */
 }
 
-.header p {
-  font-size: 1.2em; /* Adjust font size for the title */
-  color: #555; /* A subtle color for the title */
+h2 {
+    font-size: 1.5rem; /* Slightly smaller font size for the major */
+    color: #555; /* Lighter text color */
+    margin-bottom: 1rem; /* Spacing between the major and buttons */
 }
 
-/* First Row Styles */
-.links-and-bio {
-  display: flex;
-  justify-content: space-between;
-  align-items: center; /* Align items vertically */
-  margin-bottom: 30px; /* Add space below the row */
+/* Button styles */
+.v-btn {
+    margin: 0.5rem; /* Spacing around buttons */
+    font-size: 1rem; /* Font size for the text in buttons */
 }
 
-.link-button, .bio {
-  flex: 1; /* Allow buttons and bio to take equal space */
-  margin: 0 10px; /* Add space between elements */
-  padding: 15px 20px; /* Increase padding for better touch targets */
-  text-align: center; /* Center text for the bio */
+/* Carousel styles */
+.v-carousel {
+    margin-bottom: 2rem; /* Spacing between the carousel and the comments section */
 }
 
-/* Second Row Styles */
-.images {
-  display: flex;
-  justify-content: space-between; /* Space out images */
-  margin-bottom: 30px; /* Add space below the row */
-}
-
-.image {
-  flex: 1; /* Allow images to take equal space */
-  margin: 0 10px; /* Add space between images */
-  background-color: #eee; /* A placeholder color */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 200px; /* Adjust height as needed */
-}
-
-/* Comments Section Styles */
+/* Comments section styles */
 .comments-section {
-  margin-top: 30px;
-  width: 100%; /* Use full width for comments section */
-  background: #f9f9f9; /* A light background for the section */
-  padding: 20px; /* Add padding around the comments */
-  border-radius: 8px; /* Slight rounding of corners */
+    width: 90%; /* Width of the comments section */
+    max-width: 800px; /* Maximum width to maintain readability */
+    margin: auto; /* Center the comments section horizontally */
+    padding: 1rem; /* Padding inside the comments section */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+    border-radius: 8px; /* Rounded corners */
+    background: #f9f9f9; /* Light background color */
 }
 
 .comment {
-  background-color: #fff;
-  padding: 15px;
-  border-radius: 4px;
-  margin-bottom: 15px; /* Add space between comments */
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* A subtle shadow for depth */
+    background-color: #fff;
+    padding: 0.8rem;
+    border-radius: 4px;
+    margin-bottom: 1rem; /* Space between comments */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1); /* Subtle shadow for each comment */
 }
 
-.post-comment input, .post-comment button {
-  height: 40px; /* Ensure input and button are the same height */
+.post-comment {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .post-comment input {
-  width: calc(100% - 130px); /* Adjust input width to account for button */
-  margin-right: 10px; /* Add space between input and button */
+    flex: 1; /* Input field takes up remaining space */
+    padding: 0.8rem;
+    margin-right: 1rem; /* Space between input field and button */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
 }
 
 .post-comment button {
-  width: 120px; /* Fix button width */
+    padding: 0.8rem 1.6rem;
+    border: none;
+    border-radius: 4px;
+    background-color: #2196F3;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Smooth transition for button background color */
 }
 
-/* Add any additional styles you need here */
+.post-comment button:hover {
+    background-color: #0b7dda; /* Darken button color on hover */
+}
 
+/* Add responsive adjustments if needed */
+@media (max-width: 768px) {
+    .v-btn {
+        margin: 0.3rem; /* Smaller margins for buttons on small screens */
+    }
+    .post-comment {
+        flex-direction: column; /* Stack input and button on small screens */
+    }
+    .post-comment input {
+        margin-right: 0; /* Remove margin between input and button on small screens */
+        margin-bottom: 1rem; /* Add space below input field on small screens */
+    }
+}
 </style>
