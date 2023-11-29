@@ -3,16 +3,23 @@
         <!-- Major and External Links -->
         <div class="info-and-links">
             <h1>Luke Farmer</h1>
-            <h2>Senior: Electrical Engineering</h2>
+            <h2>Electrical and Computer Engineering</h2>
+            <h3> I'm a senior electrical and computer engineering major. Below is a picture of me on the first day of junior year, a picture of my roommates and I, and a picture of my dog.</h3>
             <v-btn color="primary" href="https://github.com/LukeFarmer20" target="_blank" rel="noopener" class="link-button">Github</v-btn>
-            <v-btn color="primary" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener" class="link-button">Rick Roll</v-btn>
+            <v-btn color="primary" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener" class="link-button">Informative Link</v-btn>
+            <v-btn color="secondary" @click="showFlashMessage">Show Flash Message</v-btn>
+
+            <!-- Flash Message Container -->
+            <div v-if="flashMessage" class="flash-message">
+                {{ flashMessageContent }}
+            </div>
         </div>
         <!-- Display Picture Carousel -->
-        <v-carousel style="max-width: 90vw;" cycle>
-            <v-carousel-item src="./ColeAPhoto1.jpg" cover></v-carousel-item>
-            <v-carousel-item src="./ColeAPhoto2.jpg" cover></v-carousel-item>
-            <v-carousel-item src="./ColePhoto4.jpg" cover></v-carousel-item>
-        </v-carousel>
+        <div class="image-container">
+            <img src="/LukePhoto1.JPG" alt="Luke Image 1" class="profile-image">
+            <img src="/LukePhoto2.JPEG" alt="Luke Image 2" class="profile-image">
+            <img src= "/LukePhoto3.jpg" alt="Luke Image 3" class="profile-image">
+        </div>
         <!-- Comments Section -->
         <div class="comments-section">
             <h2>Comments</h2>
@@ -45,6 +52,8 @@ export default {
             newComment: '', // Model for the new comment input
             comments: [], // Array to store comments from Firebase
             loadingComments: false, // Indicates if comments are being loaded
+            flashMessage: false, // Whether the flash message is visible
+            flashMessageContent: "I hope you're having a great day!", // The content of the flash message
         }
     },
     methods: {
@@ -72,7 +81,13 @@ export default {
             } finally {
                 this.loadingComments = false;
             }
-        }
+        },
+        showFlashMessage() {
+            this.flashMessage = true;
+            setTimeout(() => {
+                this.flashMessage = false;
+            }, 3000); // The message will disappear after 3 seconds
+        }        
     },
     mounted() {
         this.fetchComments(); // Fetch comments when component is mounted
@@ -116,6 +131,12 @@ h2 {
     font-size: 1.5rem; /* Slightly smaller font size for the major */
     color: #555; /* Lighter text color */
     margin-bottom: 1rem; /* Spacing between the major and buttons */
+}
+
+h3{
+    font-size: 1rem;
+    color: #555;
+    margin: 1rem;
 }
 
 /* Button styles */
@@ -177,8 +198,34 @@ h2 {
     background-color: #0b7dda; /* Darken button color on hover */
 }
 
+/* Image container styles */
+.image-container {
+    display: flex; /* Align images in a row */
+    justify-content: center; /* Center images horizontally */
+    gap: 1rem; /* Add space between images */
+    margin: 2rem 0; /* Add vertical space above and below the image container */
+}
+
+/* Individual image styles */
+.profile-image {
+    width: calc(33.333% - 0.666rem); /* Divide space equally between images, accounting for gap */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 4px; /* Optional: round the corners of the images */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Optional: add a subtle shadow for depth */
+}
+
+
 /* Add responsive adjustments if needed */
 @media (max-width: 768px) {
+
+    .image-container {
+        flex-direction: column; /* Stack images vertically on small screens */
+        gap: 0.5rem; /* Smaller gap between images on small screens */
+    }
+    .profile-image {
+        width: 90%; /* Adjust image width on small screens */
+        margin: auto; /* Center images vertically on small screens */
+    }
     .v-btn {
         margin: 0.3rem; /* Smaller margins for buttons on small screens */
     }
@@ -190,4 +237,26 @@ h2 {
         margin-bottom: 1rem; /* Add space below input field on small screens */
     }
 }
+
+.flash-message {
+    position: fixed; /* Position it relative to the viewport */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust for the element's size */
+    padding: 1rem 2rem;
+    background-color: #4CAF50; /* A pleasant green background */
+    color: white; /* Text color */
+    border-radius: 4px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Subtle shadow */
+    animation: flash-animation 3s; /* Animation defined below */
+    z-index: 1000; /* Ensure it's on top of other elements */
+}
+
+/* Keyframes for the flash message animation */
+@keyframes flash-animation {
+    0%, 100% { opacity: 0; }
+    10%, 90% { opacity: 1; }
+}
+
+
 </style>
