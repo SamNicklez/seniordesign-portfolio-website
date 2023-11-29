@@ -116,6 +116,6 @@ export default {
     </div>
 </template>
 
-<style>
+<style scoped>
 /* CSS STUFF GOES HERE */
 </style>
