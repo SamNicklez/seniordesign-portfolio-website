@@ -4,7 +4,7 @@
         <div class="info-and-links">
             <h1>Luke Farmer</h1>
             <h2>Electrical and Computer Engineering</h2>
-            <h3> I'm a senior electrical and computer engineering major. Below is a picture of me on the first day of junior year, a picture of my roommates and I, and a picture of my dog.</h3>
+            <h3> I'm a senior electrical and computer engineering major with a computer science minor. Below is a picture of me on the first day of junior year, a picture of my roommates and I, and a picture of my dog.</h3>
             <v-btn color="primary" href="https://github.com/LukeFarmer20" target="_blank" rel="noopener" class="link-button">Github</v-btn>
             <v-btn color="primary" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener" class="link-button">Informative Link</v-btn>
             <v-btn color="secondary" @click="showFlashMessage">Show Flash Message</v-btn>
