@@ -21,7 +21,7 @@
         <!-- Comments Section -->
     </div>
     <div>
-        <iframe src="\linkedin-badge.html" style="border: none; width: 50vw; height: 50vh; margin-left: 35vw;"></iframe>
+        <iframe src="./linkedin-badge.html" style="border: none; width: 50vw; height: 50vh; margin-left: 35vw;"></iframe>
     </div>
     <div class="comments-section">
         <h2>Comments</h2>
