@@ -5,9 +5,12 @@
             <h1>Samuel Nicklaus</h1>
             <h2>Major: Computer Science and Engineering</h2>
             <h2>Minor: Mathematics</h2>
-            <v-btn color="primary" href="https://github.com/SamNicklez" target="_blank" rel="noopener" class="link-button">Github</v-btn>
-            <v-btn color="primary" href="https://www.linkedin.com/in/sam-nicklaus/" target="_blank" rel="noopener" class="link-button">LinkedIn</v-btn>
-            <v-btn color="primary" href="https://samnicklez.github.io/ModernResume/#/" target="_blank" rel="noopener" class="link-button">Personal Website</v-btn>
+            <v-btn color="primary" href="https://github.com/SamNicklez" target="_blank" rel="noopener"
+                class="link-button">Github</v-btn>
+            <v-btn color="primary" href="https://www.linkedin.com/in/sam-nicklaus/" target="_blank" rel="noopener"
+                class="link-button">LinkedIn</v-btn>
+            <v-btn color="primary" href="https://samnicklez.github.io/ModernResume/#/" target="_blank" rel="noopener"
+                class="link-button">Personal Website</v-btn>
         </div>
         <!-- Display Picture and Name -->
         <v-carousel style="max-width: 90vw;" cycle>
@@ -16,22 +19,26 @@
             <v-carousel-item src="./SamNPhoto3.jpg" cover></v-carousel-item>
         </v-carousel>
         <!-- Comments Section -->
+    </div>
+    <div>
+        <iframe src="src\views\linkedin-badge.html" style="border: none; width: 50vw; height: 50vh; margin-left: 35vw;"></iframe>
+    </div>
+    <div class="comments-section">
+        <h2>Comments</h2>
+        <div v-if="loadingComments">Loading comments...</div>
+        <div v-for="comment in comments" :key="comment.id" class="comment">
+            <strong>{{ comment.user }}</strong>: {{ comment.comment }}
         </div>
-        <div class="comments-section">
-            <h2>Comments</h2>
-            <div v-if="loadingComments">Loading comments...</div>
-            <div v-for="comment in comments" :key="comment.id" class="comment">
-                <strong>{{ comment.user }}</strong>: {{ comment.comment }}
-            </div>
-            <div class="post-comment">
-                <input type="text" v-model="newComment" placeholder="Write a comment..." />
-                <button @click="postComment">Post Comment</button>
-            </div>
+        <div class="post-comment">
+            <input type="text" v-model="newComment" placeholder="Write a comment..." />
+            <button @click="postComment">Post Comment</button>
         </div>
+    </div>
 </template>
   
 <script>
 import { db } from '@/main.js';
+
 import { addDoc, collection, getDocs } from 'firebase/firestore';
 import { useCookies } from "vue3-cookies";
 export default {
@@ -85,11 +92,13 @@ html {
     height: 100%;
     margin: 0;
 }
-.link-button{
+
+.link-button {
     margin-left: 1vw;
     margin-bottom: 5vh;
     margin-top: 2.5vh;
 }
+
 .bio {
     display: flex;
     flex-direction: column;
@@ -148,6 +157,5 @@ html {
 
 .post-comment button:hover {
     background-color: #0b7dda;
-}
-</style>
+}</style>
   

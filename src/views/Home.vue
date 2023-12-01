@@ -59,6 +59,11 @@ export default {
           </ul>
         </div>
       </div>
+      <div style=" color: white; margin-top: 5vh; margin: auto; width: 50%; padding: 10px; text-align-last: center;">
+      <h1>Link to our Sourcecode!</h1>
+      <v-btn color="primary" href="https://github.com/SamNicklez/ece4880lab3" target="_blank" rel="noopener"
+        class="link-button">Github Link</v-btn>
+    </div>
     </div>
   </template>
   
