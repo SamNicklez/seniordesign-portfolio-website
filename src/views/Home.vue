@@ -71,7 +71,7 @@ export default {
           <v-card class="d-flex flex-column" style="height: 100%;">
             <v-card-title>Project 1: </v-card-title>
             <v-card-text>
-              portable temperature-measuring system
+              Portable temperature-measuring system
               along with a web interface. Features included a client-side user interface, with the ability to
               display temperature data and control certain functions through the GUI. For hardware, a third
               box contains a display to read out the temperature measured, a button, a battery, and a power
@@ -91,19 +91,12 @@ export default {
           <v-card class="d-flex flex-column" style="height: 100%;">
             <v-card-title>Project 2:</v-card-title>
             <v-card-text>
-              Designed and implemented the receiver side of an “electric eye” safety sensor system. We also need to send a
-              text alert when the light beam is interrupted. In order to create
-              this system, we used both hardware and software components. Our system is mostly a
-              hardware system, but we do use a Raspberry Pi with a software program to send a text when
-              the beam detects an obstacle. The main tasks that we needed to complete were receiving,
-              filtering, amplifying, and detecting the transmitted signal.
+              “electric eye” safety sensor system.
+              text alert when the light beam is interrupted. System is mostly a
+              hardware system, but we use a Raspberry Pi with a software program to send a text when
+              the beam detects an obstacle.
             </v-card-text>
             <v-img src="./Project2.png"></v-img>
-            <v-card-actions>
-              <a href="/ECE_4880_Report_2.pdf" download="ECE_4880_Report_2.pdf">
-                <v-btn text>Lab Report Download</v-btn>
-              </a>
-            </v-card-actions>
           </v-card>
         </v-col>
       </v-row>
