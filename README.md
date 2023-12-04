@@ -1,41 +1,29 @@
-# ece4880lab3 Repository Overview
+# Repository Overview for SamNicklez/ece4880lab3
 
-The `ece4880lab3` repository is dedicated to a portfolio website project for ECE 4880 Lab 3. This document provides an overview of the repository's structure and its contents.
+Welcome to the GitHub repository for the project "ece4880lab3" by SamNicklez. This repository is structured to support a web-based project, involving Vue.js. Below is an overview of the key components of this repository:
 
-## Root Files
+### Configuration and Setup
+- **.eslintrc.cjs & .prettierrc.json**: Configuration files for ESLint and Prettier, ensuring code quality and consistent formatting.
+- **package.json & package-lock.json**: These files manage project dependencies and versions.
+- **vite.config.js**: Configuration for Vite, a modern frontend build tool.
+- **deploy.sh**: A shell script, for deploying the application to Github Pages.
 
-- **.eslintrc.cjs**: Contains ESLint configuration for maintaining JavaScript coding standards.
-- **.prettierrc.json**: Prettier configuration file for ensuring consistent code formatting.
-- **.vscode/extensions.json**: Recommendations for extensions in Visual Studio Code to enhance the development environment.
-- **deploy.sh**: Shell script that is used to deploy the website to a server or hosting platform.
-- **index.html**: The main HTML file that serves as the entry point for the website.
-- **package-lock.json**: Auto-generated file to track exact versions of installed npm packages.
-- **package.json**: Lists the dependencies and their specific versions that the project requires.
-- **vite.config.js**: Configuration file for Vite, which is a frontend build tool.
+### Source Code
+- **src/**: The main source code directory.
+  - **App.vue**: The main Vue component.
+  - **main.js**: The entry point for the Vue application.
+  - **views/**: Contains Vue components for different views/pages of the application, like `Home.vue`, `Login.vue`, `Colea.vue`, `Lukef.vue`, `Saml.vue`, and `Samn.vue`.
+  - **assets/**: Static assets like images and CSS files.
 
-## Public Assets
+### Public Assets
+- **public/**: Contains public assets like images (`ColeAPhoto1.JPG`, `SamNPhoto1.jpg`, etc.) and a PDF file (`ECE_4880_Report_2.pdf`).
 
-- **public/SamNPhoto1.jpg**
-- **public/SamNPhoto2.JPEG**
-- **public/SamNPhoto3.jpg**: These images are used within the portfolio sections of the website.
-- **public/logo.ico**: The favicon for the website, displayed in the browser tab.
+### Development Environment
+- **.vscode/extensions.json**: Recommendations for Visual Studio Code extensions, to enhance the development experience.
 
-## Source Files
-
-- **src/App.vue**: The main Vue.js component file for the application.
-- **src/main.js**: The main JavaScript file that initializes the Vue.js app.
-- **src/views/Colea.vue**
-- **src/views/Home.vue**
-- **src/views/Login.vue**
-- **src/views/Lukef.vue**
-- **src/views/Saml.vue**
-- **src/views/Samn.vue**: Vue.js components representing different views or pages within the website.
-
-## Styles and Assets
-
-- **src/assets/TeamPhoto.jpg**: An image file
-- **src/assets/base.css**
-- **src/assets/main.css**: CSS files containing the base and main styles for the website's appearance.
+### Web Content
+- **index.html**: The main HTML file for the web application.
+- **public/linkedin-badge.html**: HTML content related to LinkedIn, for profile badges.
 
 ## Running the Project Locally
 
@@ -86,6 +74,4 @@ Before running the application, you need to set up Firebase configuration:
     ```bash
     npm run dev
 
-<small>Made with the assistance of GPT-4</small>
-
-
+<small>Made with the assistance of GPT-4</small
