@@ -1,4 +1,4 @@
-# Repository Overview for SamNicklez/ece4880lab3
+# Repository Overview for ece4880lab3
 
 Welcome to the GitHub repository for the project "ece4880lab3" by SamNicklez. This repository is structured to support a web-based project, involving Vue.js. Below is an overview of the key components of this repository:
 
