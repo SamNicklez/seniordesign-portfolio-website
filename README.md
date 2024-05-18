@@ -1,77 +1,105 @@
-# Repository Overview for ece4880lab3
+# Senior Design Lab 3 - Portfolio Website
 
-Welcome to the GitHub repository for the project "ece4880lab3" by SamNicklez. This repository is structured to support a web-based project, involving Vue.js. Below is an overview of the key components of this repository:
+**Team Members:** Cole Arduser, Luke Farmer, Sam Nicklaus, Sam Loecke  
+**Course:** ECE:4880 Senior Design  
+**Source Code:** [GitHub Repository](https://github.com/SamNicklez/ece4880lab3)  
+**Website Link:** [Portfolio Website](https://samnicklez.github.io/ece4880lab3/#/)
 
-### Configuration and Setup
-- **.eslintrc.cjs & .prettierrc.json**: Configuration files for ESLint and Prettier, ensuring code quality and consistent formatting.
-- **package.json & package-lock.json**: These files manage project dependencies and versions.
-- **vite.config.js**: Configuration for Vite, a modern frontend build tool.
-- **deploy.sh**: A shell script, for deploying the application to Github Pages.
+## Introduction
 
-### Source Code
-- **src/**: The main source code directory.
-  - **App.vue**: The main Vue component.
-  - **main.js**: The entry point for the Vue application.
-  - **views/**: Contains Vue components for different views/pages of the application, like `Home.vue`, `Login.vue`, `Colea.vue`, `Lukef.vue`, `Saml.vue`, and `Samn.vue`.
-  - **assets/**: Static assets like images and CSS files.
+This project focuses on developing a portfolio website to showcase team members' interests and projects. The website is publicly accessible and includes user comments and login/logout functionalities.
 
-### Public Assets
-- **public/**: Contains public assets like images (`ColeAPhoto1.JPG`, `SamNPhoto1.jpg`, etc.) and a PDF file (`ECE_4880_Report_2.pdf`).
+## Technology Stack
 
-### Development Environment
-- **.vscode/extensions.json**: Recommendations for Visual Studio Code extensions, to enhance the development experience.
+- **Front-end:** Vue.js 3, Vuetify
+- **Back-end:** Google Firebase (Firestore)
+- **Hosting:** GitHub Pages, Google Firebase
 
-### Web Content
-- **index.html**: The main HTML file for the web application.
-- **public/linkedin-badge.html**: HTML content related to LinkedIn, for profile badges.
+## Features
 
-## Running the Project Locally
+- User authentication (login/logout)
+- User comments on personal pages
+- Responsive design for various screen sizes
+- Persistent navigation bar
 
-To run the ece4880lab3 portfolio website on your local machine, follow these steps:
+## Design Overview
 
-### Prerequisites
+### Functionality
 
-- [Node.js](https://nodejs.org/) (which comes with [npm](http://npmjs.com/))
+- **Home Page:** Information about the team and project links.
+- **Personal Pages:** Individual pages for each team member, including a comment section.
+- **Navigation:** Persistent navigation bar with links to home, login, and personal pages.
 
-### Installation
+### Components
 
-1. Clone the repository and navigate to the directory:
+- **Vuetify:** Used for pre-built UI components like carousels, buttons, dropdowns, and image sheets.
+- **Custom Components:** Tailored for specific functionalities such as comments and login.
 
+## Setup and Installation
+
+1. **Clone the repository:**
    ```bash
    git clone https://github.com/SamNicklez/ece4880lab3.git
    cd ece4880lab3
+   ```
 
-2. To install the project dependencies, run the following command:
-    
-    ```bash
-    npm install
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-### Firebase Configuration
+3. **Run the development server:**
+   ```bash
+   npm run serve
+   ```
 
-Before running the application, you need to set up Firebase configuration:
+4. **Build for production:**
+   ```bash
+   npm run build
+   ```
 
-1. Create a new file named `firebaseConfig.js` in the `src` directory.
+## Usage
 
-2. Add the following configuration to the file, replacing `<your-...>` with your actual Firebase project settings:
+- Access the home page for an introduction to the team and project links.
+- Log in to view and comment on individual portfolio pages.
+- Navigate through the site using the persistent navigation bar.
 
-    ```javascript
-    const firebaseConfig = {
-      apiKey: "<your-api-key>",
-      authDomain: "<your-auth-domain>",
-      projectId: "<your-project-id>",
-      storageBucket: "<your-storage-bucket>",
-      messagingSenderId: "<your-messaging-sender-id>",
-      appId: "<your-app-id>",
-      measurementId: "<your-measurement-id>"
-    };
-    
-    export default firebaseConfig;
+## Team Contributions
 
-## Running the Application
+- **Samuel Nicklaus:** Team lead, project setup, comment feature, login implementation
+- **Cole Arduser:** UI design planning, personal page, database design and setup
+- **Luke Farmer:** UI design planning, personal page
+- **Sam Loecke:** UI design planning, personal page
 
-3. To start the development server, use the following command:
+## Testing
 
-    ```bash
-    npm run dev
+### Software Test Results
 
-<small>Made with the assistance of GPT-4</small>
+| Test Description                                                                          | Result |
+|-------------------------------------------------------------------------------------------|--------|
+| Website opens and displays the home page (locally and publicly on GitHub pages)           | Pass   |
+| Accessible team introduction page                                                         | Pass   |
+| Comment boxes input and display comments                                                  | Pass   |
+| Embedded figures inside all pages                                                         | Pass   |
+| Account creation and login                                                                | Pass   |
+| Incorrect information prompts appropriate message                                         | Pass   |
+| Three personal pages with embedded figures and introductions                             | Pass   |
+| External links redirect correctly                                                         | Pass   |
+| Headers provide navigation to other pages                                                 | Pass   |
+| Codebase stored in a GitHub repository                                                    | Pass   |
+| Proper routing to all pages                                                               | Pass   |
+| Clean UI/UX design throughout the website                                                 | Pass   |
+
+## Conclusion
+
+The project successfully met all the specified requirements, enhancing our skills in developing publicly hosted websites and using GitHub efficiently.
+
+## References
+
+- [Vue Router](https://router.vuejs.org/)
+- [Vue Test Utils](https://test-utils.vuejs.org/)
+- [Vue.js Devtools](https://github.com/vuejs/devtools)
+- [Vuetify](https://vuetifyjs.com/)
+- [Vue.js](https://vuejs.org/)
+- [vue3-cookies](https://www.npmjs.com/package/vue3-cookies)
+- [Vitest](https://vitest.dev/)
